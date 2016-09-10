@@ -1,4 +1,4 @@
-FROM python:3.4
+FROM python:2.7
 
 RUN useradd -m -s /bin/false app
 RUN mkdir -p /usr/src/app
