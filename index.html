@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Python async</title>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="theme/thoughtworks.css" id="theme">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+          document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template"># Python async
+
+<hr />
+<h4 class="subtitle">Jeff Stachelski</h4>
+<h5 class="subtitle">@jeffhsta</h5>
+
+<aside class="notes" data-markdown>apresentação</aside></script></section><section  data-markdown><script type="text/template">
+## O que é programação assíncrona
+</script></section><section  data-markdown><script type="text/template">
+![threads vs async](images/threads-vs-async.png)
+</script></section><section  data-markdown><script type="text/template">
+## O que são green threads
+</script></section><section  data-markdown><script type="text/template">
+## Async com Python < 3.5
+
+- Twisted
+- Tornado
+- Eventlet
+</script></section><section ><section data-markdown><script type="text/template">
+## Novidades no Python 3.5
+</script></section><section data-markdown><script type="text/template">
+```python
+import asyncio
+
+
+async def print_number(number):
+    print(number)
+```
+</script></section><section data-markdown><script type="text/template">
+```python
+import asyncio
+
+
+def start():
+    loop = asyncio.get_event_loop()
+
+    loop.run_until_complete(
+      asyncio.wait([
+          print_number(number)
+          for number in range(10)
+      ]))
+    loop.close()
+```
+</script></section></section><section  data-markdown><script type="text/template">
+## Fontes
+
+<p class='books-images'>
+![Twisted book 2nd edition](images/expert-python-programming-second-edition.png)
+![Expert Python programming 2nd edition](images/twisted-book-second-edition.jpg)
+</p>
+</script></section><section  data-markdown><script type="text/template">
+# Muito Obrigado!
+
+<hr />
+<p class="subtitle">https://github.com/jeffhsta/python-async</p>
+</script></section></div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+              { src: 'plugin/math/math.js', async: true }
+            ];
+
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+
+            var options = {};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+        </script>
+        
+          <script src="/scripts/presentation"></script>
+    </body>
+</html>
+
