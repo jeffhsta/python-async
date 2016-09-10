@@ -1,0 +1,26 @@
+{
+  "name": "python-async-presentation",
+  "version": "0.0.1",
+  "description": "Apresentação sobre Python assíncrono",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "reveal-md slides.md --theme thoughtworks --title 'Python async'",
+    "build": "mkdir -p dist && cp -r {screenshots,pictures,theme} dist && cp -r node_modules/reveal.js/{css,js,lib,plugin} dist && reveal-md slides.md --theme thoughtworks --title 'Python async' --static > dist/index.html",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffhsta/python-async"
+  },
+  "author": "Jeff Stachelski",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/jeffhsta/python-async/issues"
+  },
+  "homepage": "https://github.com/jeffhsta/python-async#readme",
+  "dependencies": {
+    "gh-pages": "^0.11.0",
+    "reveal-md": "0.0.30"
+  }
+}
